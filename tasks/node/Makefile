@@ -15,10 +15,10 @@ test:: install
 .PHONY: build
 build:: install
 	@echo "Running build target"
-	@npm --prefix $(SOURCE_FOLDER) run build 
+	@npm --prefix $(SOURCE_FOLDER) run build:all
 
 .PHONY: publish
-publish::
+publish:: build
 	@echo "Running publish target"
 	@for packageDir in $(DIST_FOLDER)/*; do \
   		if [ -f "$$packageDir/package.json" ]; then \
